@@ -1,0 +1,44 @@
+//non va 
+    function AddDeviceTopBug() public{
+        delete deviceTop;
+        uint256 ndev;
+        if(devices.length < 10 ){
+            for(uint256 i = 0;i<devices.length;i++){
+                if(devices[i].status == true){
+                    deviceTop.push(devices[i]);
+                }
+            }
+            //ndev = devices.length;
+        } else{
+            ndev = devices.length/10;
+            uint256 resto = devices.length % 10;
+            bool b = false;
+            uint256 index = 0;
+            while(b == false){
+                if(index<ndev){
+                    for(uint256 j = 0;j<10;j++){
+                        if(devices[(index*10)+j].status == true){
+                            deviceTop.push(devices[(index*10)+j]);
+                        }
+                    }
+                    if(deviceTop.length > 0){
+                        b == true;
+                    } else{
+                        index++;
+                    }
+                } else{
+                    for(uint256 j = 0;j<resto;j++){
+                         if(devices[(index*10)+j].status == true){
+                            deviceTop.push(devices[(index*10)+j]);
+                        }
+                    }
+                }
+                
+            }
+
+        }
+    /*
+        for(uint256 i = 0;i<ndev;i++){
+           deviceTop.push(devices[i]);
+        }*/
+    }
